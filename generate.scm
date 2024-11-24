@@ -2,7 +2,7 @@
     (
         (theImage (car (gimp-image-new 4000 4000 RGB)))
         (theBackground (car (gimp-layer-new theImage 4000 4000 RGBA-IMAGE "moon-bg" 100 LAYER-MODE-NORMAL)))
-        (theObject (car (gimp-file-load-layer RUN-NONINTERACTIVE theImage "GitHub/spacepaper/moon.xcf")))
+        (theObject (car (gimp-file-load-layer RUN-NONINTERACTIVE theImage "GitHub/spacepaper/input/moon.xcf")))
         (theGrain (car (gimp-layer-new theImage 4000 4000 RGBA-IMAGE "moon-grain" 50 LAYER-MODE-GRAIN-MERGE)))
         (theGradient (car (gimp-layer-new theImage 4000 4000 RGBA-IMAGE "moon-gradient" 100 LAYER-MODE-SOFTLIGHT)))
     )
@@ -18,5 +18,5 @@
     (gimp-image-insert-layer theImage theGradient 0 0)
     (gimp-context-set-foreground "black")
     (gimp-edit-blend theGradient BLEND-FG-TRANSPARENT NORMAL-MODE GRADIENT-RADIAL 100 0 REPEAT-NONE TRUE TRUE 3 0.2 TRUE 2000 2000 0 2000)
-    (gimp-file-save RUN-NONINTERACTIVE theImage (car (gimp-image-flatten theImage)) "GitHub/spacepaper/moon.jpg" "moon.jpg")
+    (gimp-file-save RUN-NONINTERACTIVE theImage (car (gimp-image-flatten theImage)) "GitHub/spacepaper/output/moon.jpg" "moon.jpg")
 )
