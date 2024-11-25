@@ -16,7 +16,6 @@
         (object-bottom (+ half-height object-radius))
     )
     (gimp-image-insert-layer the-image the-object 0 0)
-    (gimp-layer-set-offsets the-object object-start object-top)
     (gimp-context-set-foreground (car (gimp-image-pick-color the-image 0 object-start object-top TRUE TRUE object-radius)))
     (gimp-item-transform-scale the-object object-start object-top object-end object-bottom)
     (gimp-image-insert-layer the-image the-background 0 1)
