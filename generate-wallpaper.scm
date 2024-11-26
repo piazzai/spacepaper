@@ -1,4 +1,4 @@
-(define (generate-wallpaper name width height)
+(define (generate-wallpaper name width height filename)
     (let* ((wallpaper (car (gimp-image-new width height RGB)))
         (object (car (gimp-file-load-layer RUN-NONINTERACTIVE wallpaper (string-append (string-append "input/" name) ".xcf"))))
         (backdrop (car (gimp-layer-new wallpaper width height RGBA-IMAGE "bg" 100 LAYER-MODE-NORMAL)))
@@ -43,5 +43,5 @@
     (gimp-layer-add-mask gradient-x (car (gimp-layer-create-mask gradient-x ADD-MASK-SELECTION)))
     (gimp-layer-add-mask gradient-y (car (gimp-layer-create-mask gradient-y ADD-MASK-SELECTION)))
     (gimp-selection-none wallpaper)
-    (gimp-file-save RUN-NONINTERACTIVE wallpaper (car (gimp-image-flatten the-image)) (string-append (name ".jpg")) (string-append (name ".jpg")))
-    (gimp-image-delete the-image)))
+    (gimp-file-save RUN-NONINTERACTIVE wallpaper (car (gimp-image-flatten wallpaper)) filename filename)
+    (gimp-image-delete wallpaper)))
