@@ -14,7 +14,7 @@ exit
 
 SCRIPTS=$(find ~ -path "*GIMP*scripts")
 
-cp generate-demo.scm "$SCRIPTS"/
+cp scripts/generate-demo.scm "$SCRIPTS"/
 
 gimp -ib "(generate-demo \"$1\" \"demo/mockup-$1.png\")" -b '(gimp-quit 0)'
 

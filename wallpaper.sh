@@ -8,8 +8,8 @@ SCRIPTS=$(find ~ -path "*GIMP*scripts")
 OBJECTS=$(find input -name "*.xcf" | sed -e "s/.*\/\(.*\).xcf/\1/" | grep -v rings | grep -v mockup)
 OUTPUT=output/"$1"x"$2"
 
-cp film-grain-vertical.pat "$PATTERNS"/
-cp generate-wallpaper.scm "$SCRIPTS"/
+cp patterns/film-grain-vertical.pat "$PATTERNS"/
+cp scripts/generate-wallpaper.scm "$SCRIPTS"/
 mkdir -p "$OUTPUT"
 
 if [[ -z $3 ]]; then
