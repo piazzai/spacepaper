@@ -3,8 +3,8 @@
 [[ -z $1 ]] && { echo "error: missing width"; exit 1; }
 [[ -z $2 ]] && { echo "error: missing height"; exit 1; }
 
-PATTERNS=$(find ~/.config/GIMP -path "*patterns")
-SCRIPTS=$(find ~/.config/GIMP -path "*scripts")
+PATTERNS=$(find ~ -path "*GIMP*patterns")
+SCRIPTS=$(find ~ -path "*GIMP*scripts")
 OBJECTS=$(find input -name "*.xcf" | sed -e "s/.*\/\(.*\).xcf/\1/" | grep -v rings)
 OUTPUT=output/"$1"x"$2"
 
