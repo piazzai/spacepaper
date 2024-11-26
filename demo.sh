@@ -1,10 +1,5 @@
 #!/bin/bash -e
 
-bash wallpaper.sh 375 812
-bash wallpaper.sh 768 1024
-bash wallpaper.sh 3072 1920
-bash wallpaper.sh 4096 2304
-
 SCRIPTS=$(find ~ -path "*GIMP*scripts")
 
 cp gimp/scripts/generate-demo.scm "$SCRIPTS"/
