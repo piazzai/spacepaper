@@ -12,11 +12,13 @@ cp gimp/patterns/film-grain-vertical.pat "$PATTERNS"/
 cp gimp/scripts/generate-wallpaper.scm "$SCRIPTS"/
 
 if [[ -z $3 ]]; then
+    mkdir -p "$OUTPUT"
     for OBJECT in $OBJECTS; do
         gimp -ib "(generate-wallpaper \"$OBJECT\" $1 $2 \"$OUTPUT/$OBJECT.png\")" -b '(gimp-quit TRUE)'
         echo "$OBJECT wallpaper saved to ./$OUTPUT/$OBJECT.png"
     done
 elif [[ -f gimp/"$3".xcf && $3 != "rings" && $3 != "mockup" ]]; then
+    mkdir -p "$OUTPUT"
     gimp -ib "(generate-wallpaper \"$3\" $1 $2 \"$OUTPUT/$3.png\")" -b '(gimp-quit TRUE)'
     echo "$3 wallpaper saved to ./$OUTPUT/$3.png"
 else
