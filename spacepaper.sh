@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
-[[ -z $1 ]] && { echo "error: missing width"; exit 1; }
-[[ -z $2 ]] && { echo "error: missing height"; exit 1; }
+[[ -z $1 ]] && { echo "error: width not provided"; exit 1; }
+[[ -z $2 ]] && { echo "error: height not provided"; exit 1; }
 
 PATTERNS=$(find ~ -path "*GIMP*patterns")
 SCRIPTS=$(find ~ -path "*GIMP*scripts")
@@ -21,7 +21,7 @@ elif [[ -f input/"$3".xcf && $3 != "rings" && $3 != "mockup" ]]; then
     gimp -ib "(generate-wallpaper \"$3\" $1 $2 \"$OUTPUT/$3.png\")" -b '(gimp-quit 0)'
     echo "$3 wallpaper saved to ./$OUTPUT/$3.png"
 else
-    echo "error: invalid object"
+    echo "error: object not valid"
 fi
 
 rm -f "$PATTERNS"/film-grain-vertical.pat
