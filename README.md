@@ -1,8 +1,6 @@
 # spacepaper
 
-This is a set of space-themed background images adapted from [Simon Lee](https://unsplash.com/@simonppt)'s Pantone Planet series.
-
-The original images, covered by the [Unsplash license](https://unsplash.com/license), are included in the `sources` folder. They are also available at the following links:
+Spacepaper is a set of space-themed wallpapers based on [Simon Lee](https://unsplash.com/@simonppt)'s Pantone Planet series. The original images, covered by the [Unsplash license](https://unsplash.com/license), are available at the following links:
 
 - [Moon](https://unsplash.com/photos/a-black-and-white-photo-of-the-moon-m0p-ALuA1ok)
 - [Venus](https://unsplash.com/photos/a-piece-of-paper-with-a-picture-of-a-planet-on-it-O3oIMSvv6O8)
@@ -12,3 +10,23 @@ The original images, covered by the [Unsplash license](https://unsplash.com/lice
 - [Uranus](https://unsplash.com/photos/a-picture-of-a-round-object-with-the-name-uranus-on-it-A6OTC1-Ok-A)
 - [Saturn](https://unsplash.com/photos/a-saturn-planet-with-the-name-saturn-on-it-z1vpjHAq1o8)
 - [Earth](https://unsplash.com/photos/a-picture-of-the-earth-taken-from-space-eGALMCJ_Cvk)
+
+## Demo
+
+![](https://placehold.co/1920x1080)
+
+## Usage
+
+The image generation script requires [GIMP](https://www.gimp.org/). With this installed, wallpapers can be generated from any of the images above by running `spacepaper.sh` and specifying the desired width and height in pixels, as in the following examples:
+
+```bash
+bash spacepaper.sh 360 800 moon
+bash spacepaper.sh 768 1024 earth
+bash spacepaper.sh 1920 1080 jupiter
+```
+
+It is also possible to generate wallpapers for all of the images at once by omitting the last argument. The generated wallpapers are saved to the `output` folder in PNG format. For convenience, the folder already includes wallpapers for some common display sizes.
+
+## Bugs
+
+If you have any trouble using the script, please consider [opening an issue](https://github.com/piazzai/spacepaper/issues).
