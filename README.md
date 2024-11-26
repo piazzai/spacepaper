@@ -25,7 +25,7 @@ bash wallpaper.sh 768 1024 earth
 bash wallpaper.sh 3072 1920 jupiter
 ```
 
-It is also possible to generate wallpapers for all of the images at once by omitting the last argument, as in `bash wallpaper.sh 4096 2304`. The generated wallpapers are saved to the `wallpaper` folder in PNG format. Wallpapers pre-generated for some common display sizes are already included in the `samples` folder.
+It is also possible to generate wallpapers for all of the images at once by omitting the last argument, as in `bash wallpaper.sh 4096 2304`. The generated images are saved to the `wallpaper` folder in PNG format. For convenience, pre-generated images for some common display sizes are included in the `samples` folder.
 
 ## Bugs
 
