@@ -6,7 +6,7 @@
 PATTERNS=$(find ~ -path "*GIMP*patterns")
 SCRIPTS=$(find ~ -path "*GIMP*scripts")
 OBJECTS=$(find gimp -name "*.xcf" | sed -e "s/.*\/\(.*\).xcf/\1/" | grep -v rings | grep -v mockup)
-OUTPUT=wallpaper/"$1"x"$2"
+OUTPUT=output/"$1"x"$2"
 
 cp gimp/patterns/film-grain-vertical.pat "$PATTERNS"/
 cp gimp/scripts/generate-wallpaper.scm "$SCRIPTS"/
