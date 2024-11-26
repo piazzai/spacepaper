@@ -5,10 +5,10 @@
 [[ -z $3 ]] && { echo "error: laptop object not provided"; exit 1; }
 [[ -z $4 ]] && { echo "error: desktop object not provided"; exit 1; }
 
-bash generate-wallpaper.sh 375 812
-bash generate-wallpaper.sh 768 1024
-bash generate-wallpaper.sh 3072 1920
-bash generate-wallpaper.sh 4096 2304
+bash wallpaper.sh 375 812
+bash wallpaper.sh 768 1024
+bash wallpaper.sh 3072 1920
+bash wallpaper.sh 4096 2304
 
 exit
 
