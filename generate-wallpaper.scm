@@ -2,7 +2,7 @@
     (let* ((wallpaper (car (gimp-image-new width height RGB)))
         (object (car (gimp-file-load-layer RUN-NONINTERACTIVE wallpaper (string-append (string-append "input/" name) ".xcf"))))
         (backdrop (car (gimp-layer-new wallpaper width height RGBA-IMAGE "bg" 100 LAYER-MODE-NORMAL)))
-        (grain (car (gimp-layer-new wallpaper width height RGBA-IMAGE "grain" 25 LAYER-MODE-GRAIN-MERGE)))
+        (grain (car (gimp-layer-new wallpaper width height RGBA-IMAGE "grain" 15 LAYER-MODE-GRAIN-MERGE)))
         (gradient-x (car (gimp-layer-new wallpaper width height RGBA-IMAGE "gradient-x" 100 LAYER-MODE-SOFTLIGHT)))
         (gradient-y (car (gimp-layer-new wallpaper width height RGBA-IMAGE "gradient-y" 100 LAYER-MODE-SOFTLIGHT)))
         (center-x (/ width 2))
