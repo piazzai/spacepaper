@@ -7,7 +7,7 @@ bash wallpaper.sh 4096 2304
 
 SCRIPTS=$(find ~ -path "*GIMP*scripts")
 
-cp scripts/generate-demo.scm "$SCRIPTS"/
+cp gimp/scripts/generate-demo.scm "$SCRIPTS"/
 mkdir -p "demo"
 
 gimp -ib "(generate-demo \"moon\" \"neptune\" \"saturn\" \"venus\" \"$(mktemp -u demo/XXX).png\")" -b '(gimp-quit TRUE)'

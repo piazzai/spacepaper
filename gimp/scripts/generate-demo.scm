@@ -1,6 +1,6 @@
 (define (generate-demo name-phone name-tablet name-laptop name-desktop filename)
     (let* ((demo (car (gimp-image-new 3096 2064 RGB)))
-        (mockup (car (gimp-file-load-layer RUN-NONINTERACTIVE demo "input/mockup.xcf")))
+        (mockup (car (gimp-file-load-layer RUN-NONINTERACTIVE demo "gimp/mockup.xcf")))
         (phone (car (gimp-file-load-layer RUN-NONINTERACTIVE demo (string-append (string-append "samples/375x812/" name-phone) ".png"))))
         (tablet (car (gimp-file-load-layer RUN-NONINTERACTIVE demo (string-append (string-append "samples/768x1024/" name-tablet) ".png"))))
         (laptop (car (gimp-file-load-layer RUN-NONINTERACTIVE demo (string-append (string-append "samples/3072x1920/" name-laptop) ".png"))))
