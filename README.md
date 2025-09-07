@@ -26,7 +26,3 @@ bash spacepaper.sh 3072 1920 jupiter
 ```
 
 It is also possible to generate wallpapers for all of the images at once by omitting the last argument, as in `bash spacepaper.sh 4096 2304`. The generated images are saved to the `output` folder in PNG format. For convenience, pre-generated images for some common display sizes are included in the `samples` folder.
-
-## Bugs
-
-If you have any trouble using the script, please consider [opening an issue](https://github.com/piazzai/spacepaper/issues).
