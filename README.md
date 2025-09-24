@@ -17,7 +17,9 @@ Spacepaper is a set of space-themed wallpapers based on [Simon Lee](https://unsp
 
 ## Usage
 
-The image generation script requires [GIMP](https://www.gimp.org/) 2.10 or higher. Wallpapers can be generated from any of the images above by running `spacepaper.sh` and specifying the desired width and height in pixels, as in the following examples:
+The image generation script requires [GIMP](https://www.gimp.org/) 2.0. It will not work with 3.0 or higher because this release changed the internals of many Scheme procedures and broke plug-ins developed for the earlier version.
+
+Given that you have 2.0 installed, wallpapers can be generated from any of the images above by running `spacepaper.sh` and specifying the desired width and height in pixels, as in the following examples:
 
 ```bash
 bash spacepaper.sh 375 812 moon
@@ -25,4 +27,6 @@ bash spacepaper.sh 768 1024 earth
 bash spacepaper.sh 3072 1920 jupiter
 ```
 
-It is also possible to generate wallpapers for all of the images at once by omitting the last argument, as in `bash spacepaper.sh 4096 2304`. The generated images are saved to the `output` folder in PNG format. For convenience, pre-generated images for some common display sizes are included in the `samples` folder.
+It is also possible to generate wallpapers for all of the images at once by omitting the last argument, as in `bash spacepaper.sh 4096 2304`. The generated images are saved to the `output` folder in PNG format.
+
+For convenience, pre-generated images for some common display sizes are included in the `samples` folder.
