@@ -1,3 +1,6 @@
+> **Notice**  
+> The release of [GIMP 3.0](https://www.gimp.org/news/2025/03/16/gimp-3-0-released/) on March 16, 2025, changed the internals of many procedures and broke plugins developed for earlier GIMP versions. As a result, the image generation script in this repository no longer works and this repository is unmaintained.
+
 # spacepaper
 
 Spacepaper is a set of space-themed wallpapers based on [Simon Lee](https://unsplash.com/@simonppt)'s Pantone Planet series. The original images, covered by the [Unsplash license](https://unsplash.com/license), are available at the following links:
