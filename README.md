@@ -1,5 +1,5 @@
 > **2025-09-27 Notice**  
-> The release of [GIMP 3.0](https://www.gimp.org/news/2025/03/16/gimp-3-0-released/) on March 16, 2025, changed the internals of many Scheme procedures and broke plugins developed for earlier GIMP versions. As a result, the image generation script now throws an error. You can still use the script if you downgrade your GIMP version to 2.10, and in any case, high-resolution samples remain available. This repository is no longer maintained.
+> The release of [GIMP 3.0](https://www.gimp.org/news/2025/03/16/gimp-3-0-released/) on March 16, 2025, changed the internals of many Scheme procedures and broke plugins developed for earlier GIMP versions. As a result, the image generation script now throws an error. You can still use the script if you downgrade your GIMP version to 2.10, or you can just download high-resolution samples available in the `samples` folder. This repository is no longer maintained.
 
 # spacepaper
 
