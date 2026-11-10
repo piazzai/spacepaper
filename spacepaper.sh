@@ -1,4 +1,4 @@
-#!/bin/bash -e
+set -euo pipefail
 
 [[ -z $1 ]] && { echo "error: width not provided"; exit 1; }
 [[ -z $2 ]] && { echo "error: height not provided"; exit 1; }
