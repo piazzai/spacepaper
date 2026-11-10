@@ -15,8 +15,8 @@ GIMP_CONFIG_DIR=$(find ~/.config -maxdepth 1 -iname "GIMP" -type d)
 GIMP_VERSION_DIR=$(find "$GIMP_CONFIG_DIR" -maxdepth 1 -type d -regex ".*/[0-9]+\.[0-9]+" | sort -V | tail -n1)
 [[ -z $GIMP_VERSION_DIR ]] && { echo "error: versioned gimp config not found"; exit 1; }
 
-PATTERNS="$GIMP_VERSION_DIR"/patterns
-SCRIPTS="$GIMP_VERSION_DIR"/scripts
+PATTERNS="$GIMP_VERSION_DIR/patterns"
+SCRIPTS="$GIMP_VERSION_DIR/scripts"
 
 [[ -d "$PATTERNS" ]] || { echo "error: patterns directory not found at $PATTERNS"; exit 1; }
 [[ -d "$SCRIPTS" ]] || { echo "error: scripts directory not found at $SCRIPTS"; exit 1; }
@@ -31,8 +31,8 @@ cleanup() {
 }
 trap cleanup EXIT
 
-cp gimp/patterns/film-grain-vertical.pat "$PATTERNS"/
-cp gimp/scripts/generate-wallpaper.scm "$SCRIPTS"/
+cp gimp/patterns/film-grain-vertical.pat "$PATTERNS/"
+cp gimp/scripts/generate-wallpaper.scm "$SCRIPTS/"
 
 run_gimp() {
   local object=$1
