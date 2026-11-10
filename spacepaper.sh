@@ -25,6 +25,12 @@ mapfile -t OBJECTS < <(find gimp -maxdepth 1 -name "*.xcf" -printf "%f\n" | sed 
 
 OUTPUT=output/"$1"x"$2"
 
+cleanup() {
+  rm -f "$PATTERNS/film-grain-vertical.pat"
+  rm -f "$SCRIPTS/generate-wallpaper.scm"
+}
+trap cleanup EXIT
+
 cp gimp/patterns/film-grain-vertical.pat "$PATTERNS"/
 cp gimp/scripts/generate-wallpaper.scm "$SCRIPTS"/
 
