@@ -14,5 +14,6 @@
     (gimp-item-transform-scale laptop 349 1028 1439 1709)
     (gimp-image-insert-layer demo desktop 0 4)
     (gimp-item-transform-scale desktop 831 336 2480 1264)
-    (gimp-file-save RUN-NONINTERACTIVE demo (car (gimp-image-flatten demo)) filename filename)
+    (gimp-image-flatten demo)
+    (gimp-file-save RUN-NONINTERACTIVE demo filename)
     (gimp-image-delete demo)))
