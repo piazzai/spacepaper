@@ -18,16 +18,22 @@ OUTPUT=output/"$1"x"$2"
 cp gimp/patterns/film-grain-vertical.pat "$PATTERNS"/
 cp gimp/scripts/generate-wallpaper.scm "$SCRIPTS"/
 
-if [[ -z $3 ]]; then
-    mkdir -p "$OUTPUT"
-    for OBJECT in $OBJECTS; do
-        gimp -ib "(generate-wallpaper \"$OBJECT\" $1 $2 \"$OUTPUT/$OBJECT.png\")" -b '(gimp-quit TRUE)'
-        echo "wallpaper saved to ./$OUTPUT/$OBJECT.png"
-    done
-elif [[ -f gimp/"$3".xcf && $3 != "rings" && $3 != "mockup" ]]; then
-    mkdir -p "$OUTPUT"
-    gimp -ib "(generate-wallpaper \"$3\" $1 $2 \"$OUTPUT/$3.png\")" -b '(gimp-quit TRUE)'
-    echo "wallpaper saved to ./$OUTPUT/$3.png"
+run_gimp() {
+  local object=$1
+  if ! gimp -i --batch-interpreter=plug-in-script-fu-eval -b "(generate-wallpaper \"$object\" $2 $3 \"$OUTPUT/$object.png\")" -b "(gimp-quit TRUE)"; then
+    echo "error: gimp failed processing $object"
+    return 1
+  fi
+}
+
+if [[ -z ${3:-} ]]; then
+  mkdir -p "$OUTPUT"
+  for OBJECT in "${OBJECTS[@]}"; do
+    run_gimp "$OBJECT" "$1" "$2" > spacepaper.log 2>&1 && echo "wallpaper saved to ./$OUTPUT/$OBJECT.png"
+  done
+elif [[ -f "gimp/$3.xcf" && $3 != "rings" && $3 != "mockup" ]]; then
+  mkdir -p "$OUTPUT"
+  run_gimp "$3" "$1" "$2" > spacepaper.log 2>&1 && echo "wallpaper saved to ./$OUTPUT/$3.png"
 else
   echo "error: object not valid"
   exit 1
