@@ -16,10 +16,10 @@ GIMP_VERSION_DIR=$(find "$GIMP_CONFIG_DIR" -maxdepth 1 -type d -regex ".*/[0-9]+
 [[ -z $GIMP_VERSION_DIR ]] && { echo "error: versioned gimp config not found"; exit 1; }
 
 PATTERNS="$GIMP_VERSION_DIR/patterns"
-SCRIPTS="$GIMP_VERSION_DIR/scripts"
-
 [[ -d "$PATTERNS" ]] || { echo "error: patterns directory not found at $PATTERNS"; exit 1; }
-[[ -d "$SCRIPTS" ]] || { echo "error: scripts directory not found at $SCRIPTS"; exit 1; }
+
+PYSCRIPT="gimp/scripts/generate-wallpaper.py"
+[[ -f $PYSCRIPT ]] || { echo "error: $PYSCRIPT not found"; exit 1; }
 
 mapfile -t OBJECTS < <(find gimp -maxdepth 1 -name "*.xcf" -printf "%f\n" | sed -e "s/\.xcf$//" | grep -v -e rings -e mockup)
 
@@ -27,16 +27,17 @@ OUTPUT=output/"$1"x"$2"
 
 cleanup() {
   rm -f "$PATTERNS/film-grain-vertical.pat"
-  rm -f "$SCRIPTS/generate-wallpaper.scm"
 }
 trap cleanup EXIT
 
 cp gimp/patterns/film-grain-vertical.pat "$PATTERNS/"
-cp gimp/scripts/generate-wallpaper.scm "$SCRIPTS/"
 
 run_gimp() {
   local object=$1
-  if ! gimp -i --batch-interpreter=plug-in-script-fu-eval -b "(generate-wallpaper \"$object\" $2 $3 \"$OUTPUT/$object.png\")" -b "(gimp-quit TRUE)"; then
+  local code
+  code=$(sed -e "s/__NAME__/$object/" -e "s/__WIDTH__/$2/" -e "s/__HEIGHT__/$3/" -e "s|__FILENAME__|$OUTPUT/$object.png|" "$PYSCRIPT")
+  [[ -z $code ]] && { echo "error: generated script body is empty"; return 1; }
+  if ! gimp -i --batch-interpreter=python-fu-eval -b "$code" --quit >> spacepaper.log 2>&1; then
     echo "error: gimp failed processing $object"
     return 1
   fi
@@ -45,11 +46,11 @@ run_gimp() {
 if [[ -z ${3:-} ]]; then
   mkdir -p "$OUTPUT"
   for OBJECT in "${OBJECTS[@]}"; do
-    run_gimp "$OBJECT" "$1" "$2" > spacepaper.log 2>&1 && echo "wallpaper saved to ./$OUTPUT/$OBJECT.png"
+    run_gimp "$OBJECT" "$1" "$2" && echo "wallpaper saved to ./$OUTPUT/$OBJECT.png"
   done
 elif [[ -f "gimp/$3.xcf" && $3 != "rings" && $3 != "mockup" ]]; then
   mkdir -p "$OUTPUT"
-  run_gimp "$3" "$1" "$2" > spacepaper.log 2>&1 && echo "wallpaper saved to ./$OUTPUT/$3.png"
+  run_gimp "$3" "$1" "$2" && echo "wallpaper saved to ./$OUTPUT/$3.png"
 else
   echo "error: object not valid"
   exit 1
