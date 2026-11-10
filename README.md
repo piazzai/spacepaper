@@ -17,7 +17,7 @@ Spacepaper is a set of space-themed wallpapers based on [Simon Lee](https://unsp
 
 ## Usage
 
-The image generation script requires GIMP 2.10. Wallpapers can be generated from any of the images above by running `spacepaper.sh` and specifying the desired width and height in pixels, as in the following examples:
+The image generation script requires GIMP 3.0 or higher. Wallpapers can be generated from any of the images above by running `spacepaper.sh` and specifying the desired width and height in pixels, as in the following examples:
 
 ```bash
 bash spacepaper.sh 375 812 moon
